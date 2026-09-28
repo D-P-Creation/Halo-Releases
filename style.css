@@ -63,7 +63,7 @@ section[id],
 
 /* Navigation: position the preview comfortably below the sticky header. */
 #preview {
-  scroll-margin-top: calc(var(--header-height) + 100px);
+  scroll-margin-top: 0;
 }
 
 .skip-link {
