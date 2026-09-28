@@ -15,31 +15,26 @@ const SCREENSHOTS = {
   dashboard: {
     src: 'assets/dashboard-900.webp',
     srcset: 'assets/dashboard-900.webp 900w, assets/dashboard-1600.webp 1600w',
-    fallback: 'assets/dashboard.png',
     altKey: 'showcaseDashboardAlt'
   },
   budget: {
     src: 'assets/budget-900.webp',
     srcset: 'assets/budget-900.webp 900w, assets/budget-1600.webp 1600w',
-    fallback: 'assets/budget.png',
     altKey: 'showcaseBudgetAlt'
   },
   income: {
     src: 'assets/income-900.webp',
     srcset: 'assets/income-900.webp 900w, assets/income-1600.webp 1600w',
-    fallback: 'assets/income.png',
     altKey: 'showcaseIncomeAlt'
   },
   transactions: {
     src: 'assets/transactions-900.webp',
     srcset: 'assets/transactions-900.webp 900w, assets/transactions-1600.webp 1600w',
-    fallback: 'assets/transactions.png',
     altKey: 'showcaseTransactionsAlt'
   },
   profile: {
     src: 'assets/profile-900.webp',
     srcset: 'assets/profile-900.webp 900w, assets/profile-1600.webp 1600w',
-    fallback: 'assets/profile.png',
     altKey: 'showcaseProfileAlt'
   }
 };
@@ -317,28 +312,16 @@ function updateActiveShowcaseAlt() {
   if (shot) showcaseImage.alt = text(shot.altKey);
 }
 
-function loadImageCandidate({ src, srcset = '', sizes = '' }) {
+function preloadShot(shot) {
   return new Promise((resolve, reject) => {
     const image = new Image();
     image.decoding = 'async';
-    if (sizes) image.sizes = sizes;
-    if (srcset) image.srcset = srcset;
-    image.onload = () => resolve({ src, srcset, sizes });
+    image.sizes = SHOWCASE_SIZES;
+    image.srcset = shot.srcset;
+    image.src = shot.src;
+    image.onload = () => resolve();
     image.onerror = reject;
-    image.src = src;
   });
-}
-
-async function preloadShot(shot) {
-  try {
-    return await loadImageCandidate({
-      src: shot.src,
-      srcset: shot.srcset,
-      sizes: SHOWCASE_SIZES
-    });
-  } catch (_) {
-    return loadImageCandidate({ src: shot.fallback });
-  }
 }
 
 async function activateTab(tab, moveFocus = false) {
@@ -350,10 +333,9 @@ async function activateTab(tab, moveFocus = false) {
   }
 
   const requestId = ++showcaseRequest;
-  let loadedSource;
 
   try {
-    loadedSource = await preloadShot(shot);
+    await preloadShot(shot);
   } catch (_) {
     return;
   }
@@ -371,30 +353,13 @@ async function activateTab(tab, moveFocus = false) {
   showcasePanel.setAttribute('aria-labelledby', tab.id);
   showcaseImage.classList.add('is-changing');
 
-  const finishSwap = () => {
-    if (requestId !== showcaseRequest) return;
-    showcaseImage.classList.remove('is-changing');
-  };
-
-  showcaseImage.onload = finishSwap;
-  showcaseImage.onerror = () => {
-    showcaseImage.onerror = null;
-    showcaseImage.removeAttribute('srcset');
-    showcaseImage.removeAttribute('sizes');
-    showcaseImage.src = shot.fallback;
-    finishSwap();
-  };
-
-  if (loadedSource.srcset) {
-    showcaseImage.srcset = loadedSource.srcset;
-    showcaseImage.sizes = loadedSource.sizes || SHOWCASE_SIZES;
-  } else {
-    showcaseImage.removeAttribute('srcset');
-    showcaseImage.removeAttribute('sizes');
-  }
-
-  showcaseImage.src = loadedSource.src;
-  updateActiveShowcaseAlt();
+  requestAnimationFrame(() => {
+    showcaseImage.srcset = shot.srcset;
+    showcaseImage.sizes = SHOWCASE_SIZES;
+    showcaseImage.src = shot.src;
+    updateActiveShowcaseAlt();
+    requestAnimationFrame(() => showcaseImage.classList.remove('is-changing'));
+  });
 
   if (moveFocus) tab.focus();
 }
@@ -420,9 +385,11 @@ function preloadRemainingScreenshots() {
   Object.entries(SCREENSHOTS)
     .filter(([name]) => name !== activeShot)
     .forEach(([, shot]) => {
-      preloadShot(shot).catch(() => {
-        /* A missing preview asset should never break the rest of the site. */
-      });
+      const image = new Image();
+      image.decoding = 'async';
+      image.sizes = SHOWCASE_SIZES;
+      image.srcset = shot.srcset;
+      image.src = shot.src;
     });
 }
 

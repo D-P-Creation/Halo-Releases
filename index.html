@@ -49,19 +49,8 @@
     })();
   </script>
 
-
-  <script>
-    function haloImageFallback(image, fallbackSrc) {
-      if (!image || !fallbackSrc) return;
-      image.onerror = null;
-      image.removeAttribute('srcset');
-      image.removeAttribute('sizes');
-      image.src = fallbackSrc;
-    }
-  </script>
-
-  <link rel="stylesheet" href="style.css?v=5">
-  <script src="script.js?v=5" defer></script>
+  <link rel="stylesheet" href="style.css?v=4">
+  <script src="script.js?v=4" defer></script>
 
   <script type="application/ld+json">
   {
@@ -90,18 +79,18 @@
   <header class="site-header">
     <div class="nav shell">
       <a class="brand" href="#top" aria-label="Halo">
-        <img src="assets/halo-wordmark-250.webp" width="250" height="83" alt="Halo" onerror="haloImageFallback(this, 'assets/halo-wordmark.png')">
+        <img src="assets/halo-wordmark-250.webp" width="250" height="83" alt="Halo">
       </a>
 
       <nav id="siteNav" class="site-nav" aria-label="Navigation principale">
         <a data-i18n="navFeatures" href="#features">Fonctionnalités</a>
         <a data-i18n="navPreview" href="#preview">Aperçu</a>
         <a data-i18n="navUpdates" href="#updates">Nouveautés</a>
-        <a id="desktopDownload" data-i18n="navDownload" href="#hero-download">Télécharger</a>
+        <a id="desktopDownload" data-i18n="navDownload" href="#top">Télécharger</a>
       </nav>
 
       <div class="nav-actions">
-        <a id="mobileDownload" class="nav-download" data-i18n="navDownload" href="#hero-download">Télécharger</a>
+        <a id="mobileDownload" class="nav-download" data-i18n="navDownload" href="#top">Télécharger</a>
         <button id="language" class="language" type="button" aria-label="Passer en anglais">EN</button>
         <button id="menuToggle" class="menu-toggle" type="button" aria-controls="siteNav" aria-expanded="false" aria-label="Ouvrir le menu">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
@@ -143,8 +132,7 @@
           fetchpriority="high"
           decoding="async"
           alt="Tableau de bord Halo"
-          data-i18n-alt="heroImageAlt"
-          onerror="haloImageFallback(this, 'assets/dashboard.png')">
+          data-i18n-alt="heroImageAlt">
       </div>
     </section>
 
@@ -215,8 +203,7 @@
           height="900"
           loading="lazy"
           decoding="async"
-          alt="Aperçu du tableau de bord Halo"
-          onerror="haloImageFallback(this, 'assets/dashboard.png')">
+          alt="Aperçu du tableau de bord Halo">
       </div>
     </section>
 
@@ -237,8 +224,7 @@
         loading="lazy"
         decoding="async"
         alt="Profil financier Halo"
-        data-i18n-alt="profileImageAlt"
-        onerror="haloImageFallback(this, 'assets/profile.png')">
+        data-i18n-alt="profileImageAlt">
     </section>
 
     <section id="updates" class="section shell updates-section">
@@ -257,7 +243,7 @@
     </section>
 
     <section id="download" class="section shell download-card">
-      <img src="assets/halo-icon-192.webp" width="192" height="192" alt="" class="download-logo" loading="lazy" decoding="async" onerror="haloImageFallback(this, 'assets/halo-icon.png')">
+      <img src="assets/halo-icon-192.webp" width="192" height="192" alt="" class="download-logo" loading="lazy" decoding="async">
 
       <div class="download-copy">
         <span class="eyebrow" data-i18n="downloadEyebrow">HALO POUR WINDOWS</span>
@@ -268,13 +254,14 @@
       <div class="download-actions">
         <a id="finalDownload" class="button primary" data-download-link data-i18n="downloadInstaller"
            href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger l'installateur</a>
+        <a class="release-link" href="#updates" data-i18n="releaseNotes">Voir les nouveautés</a>
       </div>
     </section>
   </main>
 
   <footer class="footer shell">
     <div class="footer-brand">
-      <img src="assets/halo-wordmark-250.webp" width="250" height="83" alt="Halo" loading="lazy" decoding="async" onerror="haloImageFallback(this, 'assets/halo-wordmark.png')">
+      <img src="assets/halo-wordmark-250.webp" width="250" height="83" alt="Halo" loading="lazy" decoding="async">
       <span>© <span id="currentYear">2026</span> D &amp; P Creation</span>
     </div>
     <a href="https://github.com/D-P-Creation/Halo-Releases" target="_blank" rel="noopener">GitHub</a>

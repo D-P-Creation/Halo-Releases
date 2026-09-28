@@ -61,10 +61,9 @@ section[id],
   scroll-margin-top: calc(var(--header-height) + 24px);
 }
 
-/* The preview link intentionally lands a little lower so the preview heading
-   and tabs feel centered beneath the sticky header. */
+/* Navigation: position the preview comfortably below the sticky header. */
 #preview {
-  scroll-margin-top: calc(var(--header-height) + 110px);
+  scroll-margin-top: calc(var(--header-height) + 100px);
 }
 
 .skip-link {
@@ -648,10 +647,6 @@ section[id],
     --header-height: 68px;
   }
 
-  #preview {
-    scroll-margin-top: calc(var(--header-height) + 56px);
-  }
-
   .site-header {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -755,10 +750,6 @@ section[id],
 }
 
 @media (max-width: 600px) {
-  #preview {
-    scroll-margin-top: calc(var(--header-height) + 36px);
-  }
-
   .shell,
   .site-header .shell {
     width: min(100% - 28px, 1440px);
@@ -875,4 +866,3 @@ section[id],
     transform: none;
   }
 }
-
