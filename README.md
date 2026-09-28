@@ -1,2 +1,2 @@
 # Halo-Releases
-The release for Halo will be store here
+The new releases of Halo will be here :)
