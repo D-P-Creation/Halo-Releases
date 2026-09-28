@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://d-p-creation.github.io/Halo-Releases/sitemap.xml

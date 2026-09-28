@@ -1,9 +1,272 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d131d"><meta name="description" content="Halo, l'application de budget moderne conçue pour le Canada."><title>Halo — Votre budget, simplement.</title><link rel="icon" href="assets/halo-icon.png"><link rel="stylesheet" href="style.css"></head><body>
-<header class="site-header"><div class="nav shell"><a class="brand" href="#top"><img src="assets/halo-wordmark.png" alt="Halo"></a><nav><a data-i18n="navFeatures" href="#features">Fonctionnalités</a><a data-i18n="navPreview" href="#preview">Aperçu</a><a data-i18n="navDownload" href="#hero-download">Télécharger</a></nav><div class="nav-actions"><a id="navDownload" class="nav-download" href="#hero-download" data-i18n="navDownload">Télécharger</a><button id="language" class="language">EN</button></div></div></header>
-<main id="top"><section class="hero shell"><div class="hero-copy"><span class="eyebrow" data-i18n="eyebrow">BUDGET PERSONNEL INTELLIGENT</span><h1 data-i18n="heroTitle">Votre budget.<br><span>Plus clair, plus simple.</span></h1><p data-i18n="heroText">Halo rassemble vos revenus, vos dépenses et vos objectifs dans une application moderne pensée pour le Canada.</p><div id="hero-download" class="hero-actions"><a id="heroDownload" class="button primary disabled" href="#" data-i18n="downloadWindows">Télécharger pour Windows</a><a class="button ghost" href="#preview" data-i18n="discover">Découvrir Halo</a></div><div class="release-line"><span class="status-dot"></span><span id="heroVersion">Recherche de la dernière version…</span></div></div><div class="hero-visual"><div class="glow"></div><img class="app-shot" src="assets/dashboard.png" alt="Tableau de bord Halo"></div></section>
-<section id="features" class="section shell"><div class="section-heading"><span class="eyebrow" data-i18n="featuresEyebrow">TOUT AU MÊME ENDROIT</span><h2 data-i18n="featuresTitle">Une vue complète de vos finances.</h2><p data-i18n="featuresText">Halo transforme vos chiffres en une vue simple à comprendre et facile à utiliser au quotidien.</p></div><div class="feature-grid"><article class="feature"><span class="feature-icon">⌁</span><h3 data-i18n="f1Title">Budget intelligent</h3><p data-i18n="f1Text">Planifiez vos catégories, suivez vos dépenses et voyez ce qu'il vous reste.</p></article><article class="feature"><span class="feature-icon">$</span><h3 data-i18n="f2Title">Revenus adaptés au Canada</h3><p data-i18n="f2Text">Estimez votre revenu net selon votre province et votre situation financière.</p></article><article class="feature"><span class="feature-icon">↻</span><h3 data-i18n="f3Title">Paiements récurrents</h3><p data-i18n="f3Text">Ajoutez vos paiements réguliers et laissez Halo les projeter dans les prochaines périodes.</p></article><article class="feature"><span class="feature-icon">◉</span><h3 data-i18n="f4Title">Budget à deux</h3><p data-i18n="f4Text">Combinez les revenus de votre ménage tout en gardant une vue claire pour chaque personne.</p></article></div></section>
-<section id="preview" class="section shell showcase"><div class="section-heading centered"><span class="eyebrow" data-i18n="previewEyebrow">APERÇU</span><h2 data-i18n="previewTitle">Conçu pour rester lisible.</h2><p data-i18n="previewText">De votre tableau de bord jusqu'aux transactions, Halo garde la même expérience simple et cohérente.</p></div><div class="showcase-tabs"><button class="active" data-shot="dashboard" data-i18n="tabDashboard">Tableau de bord</button><button data-shot="budget" data-i18n="tabBudget">Budget</button><button data-shot="income" data-i18n="tabIncome">Revenus</button><button data-shot="transactions" data-i18n="tabTransactions">Transactions</button><button data-shot="profile" data-i18n="tabProfile">Profil</button></div><div class="showcase-frame"><img id="showcaseImage" src="assets/dashboard.png" alt="Aperçu de Halo"></div></section>
-<section class="section shell split"><div><span class="eyebrow" data-i18n="canadaEyebrow">PENSÉ POUR LE CANADA</span><h2 data-i18n="canadaTitle">Votre province fait partie du calcul.</h2><p data-i18n="canadaText">Choisissez votre province ou territoire dans votre profil. Halo adapte ses estimations financières à votre emplacement et conserve vos préférences au même endroit.</p></div><img class="profile-shot" src="assets/profile.png" alt="Profil financier Halo"></section>
-<section id="updates" class="section shell updates-section"><div class="section-heading"><span class="eyebrow" data-i18n="updatesEyebrow">NOUVEAUTÉS</span><h2 data-i18n="updatesTitle">Ce qui change dans Halo.</h2><p data-i18n="updatesText">Découvrez les nouveautés, améliorations et corrections des dernières versions sans quitter le site.</p></div><div id="releaseList" class="release-grid"><article class="release-card release-loading"><span data-i18n="updatesLoading">Chargement des notes de version…</span></article></div></section>
-<section id="download" class="section shell download-card"><img src="assets/halo-icon.png" alt="" class="download-logo"><div class="download-copy"><span class="eyebrow" data-i18n="downloadEyebrow">HALO POUR WINDOWS</span><h2 data-i18n="downloadTitle">Prêt à essayer Halo?</h2><p id="downloadMeta">Recherche de la dernière version disponible…</p></div><div class="download-actions"><a class="release-link" href="#updates" data-i18n="releaseNotes">Voir les nouveautés</a></div></section></main>
-<footer class="footer shell"><div class="footer-brand"><img src="assets/halo-wordmark.png" alt="Halo"><span>© 2026 D &amp; P Creation</span></div><a href="https://github.com/D-P-Creation/Halo-Releases" target="_blank" rel="noopener">GitHub</a></footer><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c111a">
+  <meta name="color-scheme" content="dark">
+  <meta id="metaDescription" name="description" content="Halo, l'application de budget moderne conçue pour le Canada.">
+
+  <title>Halo — Votre budget, simplement.</title>
+  <link rel="canonical" href="https://d-p-creation.github.io/Halo-Releases/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Halo">
+  <meta id="ogTitle" property="og:title" content="Halo — Votre budget, simplement.">
+  <meta id="ogDescription" property="og:description" content="Halo, l'application de budget moderne conçue pour le Canada.">
+  <meta property="og:url" content="https://d-p-creation.github.io/Halo-Releases/">
+  <meta property="og:image" content="https://d-p-creation.github.io/Halo-Releases/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta id="ogLocale" property="og:locale" content="fr_CA">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta id="twitterTitle" name="twitter:title" content="Halo — Votre budget, simplement.">
+  <meta id="twitterDescription" name="twitter:description" content="Halo, l'application de budget moderne conçue pour le Canada.">
+  <meta name="twitter:image" content="https://d-p-creation.github.io/Halo-Releases/assets/og-image.jpg">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+
+  <script>
+    (() => {
+      document.documentElement.classList.add('js');
+      let storedLanguage = null;
+      try {
+        storedLanguage = localStorage.getItem('halo-lang');
+      } catch (_) {}
+      const browserLanguage = (navigator.language || 'fr').toLowerCase();
+      const initialLanguage = storedLanguage === 'en' || storedLanguage === 'fr'
+        ? storedLanguage
+        : (browserLanguage.startsWith('fr') ? 'fr' : 'en');
+      document.documentElement.lang = initialLanguage;
+      document.documentElement.dataset.haloLang = initialLanguage;
+      if (initialLanguage === 'en') {
+        document.documentElement.classList.add('i18n-pending');
+        window.setTimeout(() => document.documentElement.classList.remove('i18n-pending'), 1800);
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="style.css?v=4">
+  <script src="script.js?v=4" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Halo",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Windows 10, Windows 11",
+    "url": "https://d-p-creation.github.io/Halo-Releases/",
+    "downloadUrl": "https://github.com/D-P-Creation/Halo-Releases/releases/latest",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CAD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "D & P Creation"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content" data-i18n="skipLink">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="nav shell">
+      <a class="brand" href="#top" aria-label="Halo">
+        <img src="assets/halo-wordmark-250.webp" width="250" height="83" alt="Halo">
+      </a>
+
+      <nav id="siteNav" class="site-nav" aria-label="Navigation principale">
+        <a data-i18n="navFeatures" href="#features">Fonctionnalités</a>
+        <a data-i18n="navPreview" href="#preview">Aperçu</a>
+        <a data-i18n="navUpdates" href="#updates">Nouveautés</a>
+        <a id="desktopDownload" data-download-link data-i18n="navDownload"
+           href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a id="mobileDownload" class="nav-download" data-download-link data-i18n="navDownload"
+           href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger</a>
+        <button id="language" class="language" type="button" aria-label="Passer en anglais">EN</button>
+        <button id="menuToggle" class="menu-toggle" type="button" aria-controls="siteNav" aria-expanded="false" aria-label="Ouvrir le menu">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+            <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="top" class="hero shell">
+      <div class="hero-copy">
+        <span class="eyebrow" data-i18n="eyebrow">BUDGET PERSONNEL INTELLIGENT</span>
+        <h1 data-i18n="heroTitle">Votre budget.<br><span>Plus clair, plus simple.</span></h1>
+        <p data-i18n="heroText">Halo rassemble vos revenus, vos dépenses et vos objectifs dans une application moderne pensée pour le Canada.</p>
+
+        <div id="hero-download" class="hero-actions">
+          <a id="heroDownload" class="button primary" data-download-link data-i18n="downloadWindows"
+             href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger pour Windows</a>
+          <a class="button ghost" href="#preview" data-i18n="discover">Découvrir Halo</a>
+        </div>
+
+        <div class="release-line" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="heroVersion" data-i18n="versionChecking">Recherche de la dernière version…</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="glow" aria-hidden="true"></div>
+        <img
+          class="app-shot"
+          src="assets/dashboard-900.webp"
+          srcset="assets/dashboard-900.webp 900w, assets/dashboard-1600.webp 1600w"
+          sizes="(max-width: 900px) calc(100vw - 48px), 58vw"
+          width="1600"
+          height="855"
+          fetchpriority="high"
+          decoding="async"
+          alt="Tableau de bord Halo"
+          data-i18n-alt="heroImageAlt">
+      </div>
+    </section>
+
+    <section id="features" class="section shell">
+      <div class="section-heading">
+        <span class="eyebrow" data-i18n="featuresEyebrow">TOUT AU MÊME ENDROIT</span>
+        <h2 data-i18n="featuresTitle">Une vue complète de vos finances.</h2>
+        <p data-i18n="featuresText">Halo transforme vos chiffres en une vue simple à comprendre et facile à utiliser au quotidien.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M5 18V10m7 8V6m7 12v-5M3 20h18"/></svg>
+          </span>
+          <h3 data-i18n="f1Title">Budget intelligent</h3>
+          <p data-i18n="f1Text">Planifiez vos catégories, suivez vos dépenses et voyez ce qu'il vous reste.</p>
+        </article>
+
+        <article class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="8"/><path d="M14.8 8.8c-.7-.8-1.6-1.2-2.8-1.2-1.6 0-2.8.8-2.8 2 0 3.2 5.8 1.3 5.8 4.7 0 1.3-1.2 2.2-3 2.2-1.3 0-2.5-.5-3.3-1.4M12 5.8v12.4"/></svg>
+          </span>
+          <h3 data-i18n="f2Title">Revenus adaptés au Canada</h3>
+          <p data-i18n="f2Text">Estimez votre revenu net selon votre province et votre situation financière.</p>
+        </article>
+
+        <article class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M20 7v5h-5M4 17v-5h5M6.1 8.2A7 7 0 0 1 18.8 10M17.9 15.8A7 7 0 0 1 5.2 14"/></svg>
+          </span>
+          <h3 data-i18n="f3Title">Paiements récurrents</h3>
+          <p data-i18n="f3Text">Ajoutez vos paiements réguliers et laissez Halo les projeter dans les prochaines périodes.</p>
+        </article>
+
+        <article class="feature">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><circle cx="9" cy="9" r="3"/><circle cx="16.5" cy="10" r="2.5"/><path d="M3.5 19c.7-3.1 2.6-4.8 5.5-4.8s4.8 1.7 5.5 4.8M14 15c2.8-.7 5.2.8 6.2 3.5"/></svg>
+          </span>
+          <h3 data-i18n="f4Title">Budget à deux</h3>
+          <p data-i18n="f4Text">Combinez les revenus de votre ménage tout en gardant une vue claire pour chaque personne.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="preview" class="section shell showcase">
+      <div class="section-heading centered">
+        <span class="eyebrow" data-i18n="previewEyebrow">APERÇU</span>
+        <h2 data-i18n="previewTitle">Conçu pour rester lisible.</h2>
+        <p data-i18n="previewText">De votre tableau de bord jusqu'aux transactions, Halo garde la même expérience simple et cohérente.</p>
+      </div>
+
+      <div class="showcase-tabs" role="tablist" aria-label="Aperçus de Halo" data-i18n-aria-label="previewTabsLabel">
+        <button id="tab-dashboard" class="active" type="button" role="tab" aria-selected="true" aria-controls="showcase-panel" tabindex="0" data-shot="dashboard" data-i18n="tabDashboard">Tableau de bord</button>
+        <button id="tab-budget" type="button" role="tab" aria-selected="false" aria-controls="showcase-panel" tabindex="-1" data-shot="budget" data-i18n="tabBudget">Budget</button>
+        <button id="tab-income" type="button" role="tab" aria-selected="false" aria-controls="showcase-panel" tabindex="-1" data-shot="income" data-i18n="tabIncome">Revenus</button>
+        <button id="tab-transactions" type="button" role="tab" aria-selected="false" aria-controls="showcase-panel" tabindex="-1" data-shot="transactions" data-i18n="tabTransactions">Transactions</button>
+        <button id="tab-profile" type="button" role="tab" aria-selected="false" aria-controls="showcase-panel" tabindex="-1" data-shot="profile" data-i18n="tabProfile">Profil</button>
+      </div>
+
+      <div id="showcase-panel" class="showcase-frame" role="tabpanel" aria-labelledby="tab-dashboard" tabindex="0">
+        <img
+          id="showcaseImage"
+          src="assets/dashboard-900.webp"
+          srcset="assets/dashboard-900.webp 900w, assets/dashboard-1600.webp 1600w"
+          sizes="(max-width: 600px) calc(100vw - 28px), (max-width: 900px) calc(100vw - 48px), 1390px"
+          width="1600"
+          height="900"
+          loading="lazy"
+          decoding="async"
+          alt="Aperçu du tableau de bord Halo">
+      </div>
+    </section>
+
+    <section class="section shell split">
+      <div>
+        <span class="eyebrow" data-i18n="canadaEyebrow">PENSÉ POUR LE CANADA</span>
+        <h2 data-i18n="canadaTitle">Votre province fait partie du calcul.</h2>
+        <p data-i18n="canadaText">Choisissez votre province ou territoire dans votre profil. Halo adapte ses estimations financières à votre emplacement et conserve vos préférences au même endroit.</p>
+      </div>
+
+      <img
+        class="profile-shot"
+        src="assets/profile-900.webp"
+        srcset="assets/profile-900.webp 900w, assets/profile-1600.webp 1600w"
+        sizes="(max-width: 900px) calc(100vw - 48px), 62vw"
+        width="1600"
+        height="823"
+        loading="lazy"
+        decoding="async"
+        alt="Profil financier Halo"
+        data-i18n-alt="profileImageAlt">
+    </section>
+
+    <section id="updates" class="section shell updates-section">
+      <div class="section-heading">
+        <span class="eyebrow" data-i18n="updatesEyebrow">NOUVEAUTÉS</span>
+        <h2 data-i18n="updatesTitle">Ce qui change dans Halo.</h2>
+        <p data-i18n="updatesText">Découvrez les nouveautés, améliorations et corrections des dernières versions sans quitter le site.</p>
+      </div>
+
+      <div id="releaseList" class="release-grid" aria-live="polite">
+        <article class="release-card release-fallback">
+          <p data-i18n="updatesFallback">Les notes de version sont disponibles sur GitHub Releases.</p>
+          <a class="release-external-link" href="https://github.com/D-P-Creation/Halo-Releases/releases" target="_blank" rel="noopener" data-i18n="viewReleases">Voir les versions sur GitHub</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="download" class="section shell download-card">
+      <img src="assets/halo-icon-192.webp" width="192" height="192" alt="" class="download-logo" loading="lazy" decoding="async">
+
+      <div class="download-copy">
+        <span class="eyebrow" data-i18n="downloadEyebrow">HALO POUR WINDOWS</span>
+        <h2 data-i18n="downloadTitle">Prêt à essayer Halo?</h2>
+        <p id="downloadMeta" data-i18n="downloadFallback">Windows 10/11 • Téléchargement via GitHub Releases</p>
+      </div>
+
+      <div class="download-actions">
+        <a id="finalDownload" class="button primary" data-download-link data-i18n="downloadInstaller"
+           href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger l'installateur</a>
+        <a class="release-link" href="#updates" data-i18n="releaseNotes">Voir les nouveautés</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <div class="footer-brand">
+      <img src="assets/halo-wordmark-250.webp" width="250" height="83" alt="Halo" loading="lazy" decoding="async">
+      <span>© <span id="currentYear">2026</span> D &amp; P Creation</span>
+    </div>
+    <a href="https://github.com/D-P-Creation/Halo-Releases" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+</body>
+</html>
