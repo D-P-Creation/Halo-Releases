@@ -61,6 +61,7 @@ const i18n = {
     heroTitle: 'Votre budget.<br><span>Plus clair, plus simple.</span>',
     heroText: 'Halo rassemble vos revenus, vos dépenses et vos objectifs dans une application moderne pensée pour le Canada.',
     downloadWindows: 'Télécharger pour Windows',
+    downloadMac: 'Télécharger pour macOS',
     discover: 'Découvrir Halo',
     versionChecking: 'Recherche de la dernière version…',
     versionFallback: 'Téléchargement disponible sur GitHub Releases',
@@ -104,13 +105,13 @@ const i18n = {
     viewReleases: 'Voir les versions sur GitHub',
     viewFullRelease: 'Voir tout sur GitHub',
     latestBadge: 'Dernière version',
-    downloadEyebrow: 'HALO POUR WINDOWS',
+    downloadEyebrow: 'HALO POUR WINDOWS ET macOS',
     downloadTitle: 'Prêt à essayer Halo?',
     downloadInstaller: "Télécharger l'installateur",
     releaseNotes: 'Voir les nouveautés',
-    downloadFallback: 'Windows 10/11 • Téléchargement via GitHub Releases',
-    latestVersion: version => `Dernière version : ${version} • Windows`,
-    downloadMeta: (version, size, date) => `Version ${version} • Windows 10/11${size ? ` • ${size}` : ''}${date ? ` • ${date}` : ''}`
+    downloadFallback: 'Windows 10/11 et macOS • Téléchargement via GitHub Releases',
+    latestVersion: version => `Dernière version : ${version} • Windows et macOS`,
+    downloadMeta: (version, windowsSize, macSize, date) => `Version ${version} • Windows 10/11${windowsSize ? ` (${windowsSize})` : ''} • macOS${macSize ? ` (${macSize})` : ''}${date ? ` • ${date}` : ''}`
   },
   en: {
     pageTitle: 'Halo — Your budget, made simple.',
@@ -128,6 +129,7 @@ const i18n = {
     heroTitle: 'Your budget.<br><span>Clearer, simpler.</span>',
     heroText: 'Halo brings your income, spending and goals together in a modern app designed for Canada.',
     downloadWindows: 'Download for Windows',
+    downloadMac: 'Download for macOS',
     discover: 'Discover Halo',
     versionChecking: 'Checking the latest version…',
     versionFallback: 'Download available on GitHub Releases',
@@ -171,13 +173,13 @@ const i18n = {
     viewReleases: 'View releases on GitHub',
     viewFullRelease: 'View full release on GitHub',
     latestBadge: 'Latest',
-    downloadEyebrow: 'HALO FOR WINDOWS',
+    downloadEyebrow: 'HALO FOR WINDOWS AND macOS',
     downloadTitle: 'Ready to try Halo?',
     downloadInstaller: 'Download installer',
     releaseNotes: 'See what’s new',
-    downloadFallback: 'Windows 10/11 • Download via GitHub Releases',
-    latestVersion: version => `Latest version: ${version} • Windows`,
-    downloadMeta: (version, size, date) => `Version ${version} • Windows 10/11${size ? ` • ${size}` : ''}${date ? ` • ${date}` : ''}`
+    downloadFallback: 'Windows 10/11 and macOS • Download via GitHub Releases',
+    latestVersion: version => `Latest version: ${version} • Windows and macOS`,
+    downloadMeta: (version, windowsSize, macSize, date) => `Version ${version} • Windows 10/11${windowsSize ? ` (${windowsSize})` : ''} • macOS${macSize ? ` (${macSize})` : ''}${date ? ` • ${date}` : ''}`
   }
 };
 
@@ -402,36 +404,6 @@ window.addEventListener('load', () => {
 });
 
 /* =========================================================
-   Internal navigation
-   Keep the public URL clean when using the header navigation.
-   Direct URLs containing #features, #preview or #updates still
-   work normally when someone intentionally opens one.
-   ========================================================= */
-function scrollToSectionWithoutHash(link) {
-  const selector = link.getAttribute('href');
-  if (!selector || !selector.startsWith('#')) return;
-
-  const target = document.querySelector(selector);
-  if (!target) return;
-
-  link.addEventListener('click', event => {
-    event.preventDefault();
-    target.scrollIntoView({
-      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-      block: 'start'
-    });
-
-    // Remove an existing section hash as well, so copying the URL after
-    // navigating from the menu always shares the Halo home page.
-    if (window.location.hash) {
-      history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
-    }
-  });
-}
-
-document.querySelectorAll('#siteNav a[href^="#"], #mobileDownload[href^="#"]').forEach(scrollToSectionWithoutHash);
-
-/* =========================================================
    Release / download helpers
    ========================================================= */
 function stableReleases(items) {
@@ -440,10 +412,19 @@ function stableReleases(items) {
     : [];
 }
 
-function installerAsset(release) {
+function windowsInstallerAsset(release) {
   const assets = Array.isArray(release?.assets) ? release.assets : [];
   return assets.find(asset => /^Halo-Setup-v.*\.exe$/i.test(asset.name))
     || assets.find(asset => /\.exe$/i.test(asset.name))
+    || null;
+}
+
+function macInstallerAsset(release) {
+  const assets = Array.isArray(release?.assets) ? release.assets : [];
+  const dmgs = assets.filter(asset => /\.dmg$/i.test(asset.name));
+  return dmgs.find(asset => /macos.*arm64/i.test(asset.name))
+    || dmgs.find(asset => /macos/i.test(asset.name))
+    || dmgs[0]
     || null;
 }
 
@@ -465,13 +446,15 @@ function formatDate(dateValue) {
   }).format(date);
 }
 
-function setDownloadTarget(url) {
-  const target = url || LATEST_RELEASE_PAGE;
-  document.querySelectorAll('[data-download-link]').forEach(link => {
-    link.href = target;
-    link.classList.remove('is-disabled');
-    link.removeAttribute('aria-disabled');
-    link.removeAttribute('tabindex');
+function setPlatformDownloadTargets(windowsUrl, macUrl) {
+  const windowsTarget = windowsUrl || LATEST_RELEASE_PAGE;
+  const macTarget = macUrl || LATEST_RELEASE_PAGE;
+
+  document.querySelectorAll('[data-windows-download]').forEach(link => {
+    link.href = windowsTarget;
+  });
+  document.querySelectorAll('[data-macos-download]').forEach(link => {
+    link.href = macTarget;
   });
 }
 
@@ -482,18 +465,23 @@ function renderReleaseSummary() {
   if (!latestRelease) {
     heroVersion.textContent = apiFailed ? text('versionFallback') : text('versionChecking');
     downloadMeta.textContent = text('downloadFallback');
-    setDownloadTarget(LATEST_RELEASE_PAGE);
+    setPlatformDownloadTargets(LATEST_RELEASE_PAGE, LATEST_RELEASE_PAGE);
     return;
   }
 
   const version = (latestRelease.tag_name || latestRelease.name || '').replace(/^v/i, '') || '?';
-  const asset = installerAsset(latestRelease);
-  const size = asset ? formatBytes(asset.size) : '';
+  const windowsAsset = windowsInstallerAsset(latestRelease);
+  const macAsset = macInstallerAsset(latestRelease);
+  const windowsSize = windowsAsset ? formatBytes(windowsAsset.size) : '';
+  const macSize = macAsset ? formatBytes(macAsset.size) : '';
   const date = formatDate(latestRelease.published_at || latestRelease.created_at);
 
   heroVersion.textContent = i18n[lang].latestVersion(version);
-  downloadMeta.textContent = i18n[lang].downloadMeta(version, size, date);
-  setDownloadTarget(asset?.browser_download_url || LATEST_RELEASE_PAGE);
+  downloadMeta.textContent = i18n[lang].downloadMeta(version, windowsSize, macSize, date);
+  setPlatformDownloadTargets(
+    windowsAsset?.browser_download_url || LATEST_RELEASE_PAGE,
+    macAsset?.browser_download_url || LATEST_RELEASE_PAGE
+  );
 }
 
 /* =========================================================
@@ -739,6 +727,6 @@ function initializeReleases() {
    Startup
    ========================================================= */
 document.getElementById('currentYear').textContent = String(new Date().getFullYear());
-setDownloadTarget(LATEST_RELEASE_PAGE);
+setPlatformDownloadTargets(LATEST_RELEASE_PAGE, LATEST_RELEASE_PAGE);
 applyLang();
 initializeReleases();

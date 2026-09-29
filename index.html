@@ -49,8 +49,8 @@
     })();
   </script>
 
-  <link rel="stylesheet" href="style.css?v=4">
-  <script src="script.js?v=4" defer></script>
+  <link rel="stylesheet" href="style.css?v=5">
+  <script src="script.js?v=5" defer></script>
 
   <script type="application/ld+json">
   {
@@ -58,7 +58,7 @@
     "@type": "SoftwareApplication",
     "name": "Halo",
     "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Windows 10, Windows 11",
+    "operatingSystem": "Windows 10, Windows 11, macOS",
     "url": "https://d-p-creation.github.io/Halo-Releases/",
     "downloadUrl": "https://github.com/D-P-Creation/Halo-Releases/releases/latest",
     "offers": {
@@ -83,10 +83,10 @@
       </a>
 
       <nav id="siteNav" class="site-nav" aria-label="Navigation principale">
-        <a id="desktopDownload" data-i18n="navDownload" href="#top">Télécharger</a>
         <a data-i18n="navFeatures" href="#features">Fonctionnalités</a>
         <a data-i18n="navPreview" href="#preview">Aperçu</a>
         <a data-i18n="navUpdates" href="#updates">Nouveautés</a>
+        <a id="desktopDownload" data-i18n="navDownload" href="#top">Télécharger</a>
       </nav>
 
       <div class="nav-actions">
@@ -109,8 +109,10 @@
         <p data-i18n="heroText">Halo rassemble vos revenus, vos dépenses et vos objectifs dans une application moderne pensée pour le Canada.</p>
 
         <div id="hero-download" class="hero-actions">
-          <a id="heroDownload" class="button primary" data-download-link data-i18n="downloadWindows"
+          <a id="heroDownload" class="button primary" data-windows-download data-i18n="downloadWindows"
              href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger pour Windows</a>
+          <a id="heroDownloadMac" class="button ghost platform-download" data-macos-download data-i18n="downloadMac"
+             href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger pour macOS</a>
           <a class="button ghost" href="#preview" data-i18n="discover">Découvrir Halo</a>
         </div>
 
@@ -246,15 +248,16 @@
       <img src="assets/halo-icon-192.webp" width="192" height="192" alt="" class="download-logo" loading="lazy" decoding="async">
 
       <div class="download-copy">
-        <span class="eyebrow" data-i18n="downloadEyebrow">HALO POUR WINDOWS</span>
+        <span class="eyebrow" data-i18n="downloadEyebrow">HALO POUR WINDOWS ET macOS</span>
         <h2 data-i18n="downloadTitle">Prêt à essayer Halo?</h2>
-        <p id="downloadMeta" data-i18n="downloadFallback">Windows 10/11 • Téléchargement via GitHub Releases</p>
+        <p id="downloadMeta" data-i18n="downloadFallback">Windows 10/11 et macOS • Téléchargement via GitHub Releases</p>
       </div>
 
       <div class="download-actions">
-        <a id="finalDownload" class="button primary" data-download-link data-i18n="downloadInstaller"
-           href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger l'installateur</a>
-        <a class="release-link" href="#updates" data-i18n="releaseNotes">Voir les nouveautés</a>
+        <a id="finalDownload" class="button primary" data-windows-download data-i18n="downloadWindows"
+           href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger pour Windows</a>
+        <a id="finalDownloadMac" class="button ghost" data-macos-download data-i18n="downloadMac"
+           href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger pour macOS</a>
       </div>
     </section>
   </main>
