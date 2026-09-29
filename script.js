@@ -402,6 +402,36 @@ window.addEventListener('load', () => {
 });
 
 /* =========================================================
+   Internal navigation
+   Keep the public URL clean when using the header navigation.
+   Direct URLs containing #features, #preview or #updates still
+   work normally when someone intentionally opens one.
+   ========================================================= */
+function scrollToSectionWithoutHash(link) {
+  const selector = link.getAttribute('href');
+  if (!selector || !selector.startsWith('#')) return;
+
+  const target = document.querySelector(selector);
+  if (!target) return;
+
+  link.addEventListener('click', event => {
+    event.preventDefault();
+    target.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start'
+    });
+
+    // Remove an existing section hash as well, so copying the URL after
+    // navigating from the menu always shares the Halo home page.
+    if (window.location.hash) {
+      history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+    }
+  });
+}
+
+document.querySelectorAll('#siteNav a[href^="#"], #mobileDownload[href^="#"]').forEach(scrollToSectionWithoutHash);
+
+/* =========================================================
    Release / download helpers
    ========================================================= */
 function stableReleases(items) {
