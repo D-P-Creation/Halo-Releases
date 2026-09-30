@@ -49,8 +49,8 @@
     })();
   </script>
 
-  <link rel="stylesheet" href="style.css?v=5">
-  <script src="script.js?v=5" defer></script>
+  <link rel="stylesheet" href="style.css?v=6">
+  <script src="script.js?v=6" defer></script>
 
   <script type="application/ld+json">
   {
@@ -78,19 +78,19 @@
 
   <header class="site-header">
     <div class="nav shell">
-      <a class="brand" href="#top" aria-label="Halo">
+      <a class="brand" href="#top" data-clean-scroll aria-label="Halo">
         <img src="assets/halo-wordmark-250.webp" width="250" height="83" alt="Halo">
       </a>
 
       <nav id="siteNav" class="site-nav" aria-label="Navigation principale">
-        <a data-i18n="navFeatures" href="#features">Fonctionnalités</a>
-        <a data-i18n="navPreview" href="#preview">Aperçu</a>
-        <a data-i18n="navUpdates" href="#updates">Nouveautés</a>
-        <a id="desktopDownload" data-i18n="navDownload" href="#top">Télécharger</a>
+        <a id="desktopDownload" data-i18n="navDownload" href="#top" data-clean-scroll>Télécharger</a>
+        <a data-i18n="navFeatures" href="#features" data-clean-scroll>Fonctionnalités</a>
+        <a data-i18n="navPreview" href="#preview" data-clean-scroll>Aperçu</a>
+        <a data-i18n="navUpdates" href="#updates" data-clean-scroll>Nouveautés</a>
       </nav>
 
       <div class="nav-actions">
-        <a id="mobileDownload" class="nav-download" data-i18n="navDownload" href="#top">Télécharger</a>
+        <a id="mobileDownload" class="nav-download" data-i18n="navDownload" href="#top" data-clean-scroll>Télécharger</a>
         <button id="language" class="language" type="button" aria-label="Passer en anglais">EN</button>
         <button id="menuToggle" class="menu-toggle" type="button" aria-controls="siteNav" aria-expanded="false" aria-label="Ouvrir le menu">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
@@ -113,7 +113,7 @@
              href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger pour Windows</a>
           <a id="heroDownloadMac" class="button ghost platform-download" data-macos-download data-i18n="downloadMac"
              href="https://github.com/D-P-Creation/Halo-Releases/releases/latest">Télécharger pour macOS</a>
-          <a class="button ghost" href="#preview" data-i18n="discover">Découvrir Halo</a>
+          <a class="button ghost" href="#preview" data-clean-scroll data-i18n="discover">Découvrir Halo</a>
         </div>
 
         <div class="release-line" aria-live="polite">

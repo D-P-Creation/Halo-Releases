@@ -404,6 +404,42 @@ window.addEventListener('load', () => {
 });
 
 /* =========================================================
+   Navigation interne sans fragment dans l'URL
+   ========================================================= */
+const cleanScrollLinks = document.querySelectorAll('[data-clean-scroll][href^="#"]');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+function cleanCurrentHash() {
+  if (!window.location.hash) return;
+  const cleanUrl = `${window.location.pathname}${window.location.search}`;
+  window.history.replaceState(window.history.state, '', cleanUrl);
+}
+
+cleanScrollLinks.forEach(link => {
+  link.addEventListener('click', event => {
+    const hash = link.getAttribute('href');
+    if (!hash || hash === '#') return;
+
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    event.preventDefault();
+    const behavior = prefersReducedMotion.matches ? 'auto' : 'smooth';
+
+    if (hash === '#top') {
+      window.scrollTo({ top: 0, left: 0, behavior });
+    } else {
+      target.scrollIntoView({ behavior, block: 'start' });
+    }
+
+    // La navigation interne ne doit jamais laisser #top/#preview/etc. dans
+    // l'adresse copiée. Les liens directs contenant un hash restent toutefois
+    // utilisables lorsqu'ils sont ouverts depuis l'extérieur.
+    cleanCurrentHash();
+  });
+});
+
+/* =========================================================
    Release / download helpers
    ========================================================= */
 function stableReleases(items) {
